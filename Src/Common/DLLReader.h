@@ -6,7 +6,7 @@ struct Loader{
     vector<void*>Dlls;
     vector<void*>Inits;
 };
-extern "C"
+extern "C++"
 {
     Loader*LDNew_Loader();
     void LDRegisterFromDlls(Loader*,Abstract*);

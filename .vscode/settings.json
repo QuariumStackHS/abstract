@@ -4,7 +4,8 @@
         "iosfwd": "cpp",
         "ios": "cpp",
         "locale": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "map": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

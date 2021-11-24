@@ -5,3 +5,4 @@ g++ Main.o DLLReader.o Abstract.o -rdynamic -ldl -o Abstract
 rm Main.o
 rm DLLReader.o
 rm Abstract.o
+sh BuildDll.sh

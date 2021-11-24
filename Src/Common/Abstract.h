@@ -21,13 +21,14 @@ struct Abstract
     /*Function added by Dlls*/
 
     map<string, FNC> DllFuncs;
-    vector<char*>Param;
+    //param could be anything
+    vector<void*>Param;
 
 };
 
 
 /*everything here is define in Src/Abstract.cpp*/
-extern "C"
+extern "C++"
 {
     Abstract *AB_New();
     void AB_Insert(Abstract *, string, Abstract::FNC);
