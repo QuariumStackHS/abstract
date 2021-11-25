@@ -1,7 +1,8 @@
 #include "Common/Abstract.h"
 
 void addSrcto(Abstract*AB){
-    cout<<"Hello From DLL"<<endl;
+    string *param=(string*)AB_ReadNextParam(AB);
+    cout<<*param<<endl;
 };
 void rmSrcfrom(Abstract*AB){
     cout<<"!Hello From DLL"<<endl;

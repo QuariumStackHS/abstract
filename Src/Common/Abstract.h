@@ -1,16 +1,15 @@
 #ifndef ABSTRACT
 #define ABSTRACT
 #include <cstring>
+#include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <memory.h>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <filesystem>
 namespace fs = std::filesystem;
 using namespace std;
-
 
 /*definition for Main and Dlls of Abstract Structure*/
 struct Abstract
@@ -21,20 +20,22 @@ struct Abstract
     /*Function added by Dlls*/
 
     map<string, FNC> DllFuncs;
-    //param could be anything
-    vector<void*>Param;
-
+    // param could be anything
+    vector<void *> Param;
+    int ParamIndex=0;
 };
-
 
 /*everything here is define in Src/Abstract.cpp*/
 extern "C++"
 {
     Abstract *AB_New();
     void AB_Insert(Abstract *, string, Abstract::FNC);
+    void AB_PushParam(Abstract*,void*);
+    void AB_BuildParamfromchar(Abstract*,char**,int);
+    void* AB_PopParam(Abstract*);
+    void* AB_ReadNextParam(Abstract*);
     void AB_Dump(Abstract *);
 }
-
 
 /*use DLLEXPORT as a keyword see Src/DLL.cpp*/
 #ifndef DLLEXPORT

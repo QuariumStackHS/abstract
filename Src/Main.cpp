@@ -5,6 +5,7 @@ int main(int argc, char **argv)
     Abstract::Ab_stract *This = AB_New();
     Loader *Load = LDNew_Loader();
     /*Initialise all dlls*/
+    AB_BuildParamfromchar(This,argv,argc);
     cout << "Registering.." << endl;
     LDRegisterFromDlls(Load, This);
 
