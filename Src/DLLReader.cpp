@@ -49,10 +49,11 @@ void LDRegisterFromDlls(Loader *load, Abstract *This)
 }
 // close all loaded dll
 
-void LDDynUnload(Loader *LD, string STR)
+void LDDynUnload(Loader *LD,Abstract*TAB, string STR)
 {
     if (LD->DllMap[STR] != nullptr)
     {
+        ((Abstract::FNC)dlsym(LD->DllMap[STR], "destroy"))(TAB);
         for (int i = 0; i < LD->Dlls.size(); i++)
         {
             if (LD->DllMap[STR] == LD->Dlls[i])
@@ -65,12 +66,12 @@ void LDDynUnload(Loader *LD, string STR)
         cout << "ERROR could not find dll in ram:" << STR << endl;
     return;
 }
-void LDUnloadAllDlls(Loader *load)
+void LDUnloadAllDlls(Loader *load,Abstract*T)
 {
 
     for (map<string, void *>::iterator it = load->DllMap.begin(); it != load->DllMap.end(); it++)
     {
-        LDDynUnload(load, it->first);
+        LDDynUnload(load,T, it->first);
     }
     return;
 }
@@ -79,4 +80,5 @@ void LDDynload(Loader *LD, string STR)
     LD->Dlls.push_back(dlopen(STR.c_str(), RTLD_NOW));
     LD->Inits.push_back(dlsym(LD->Dlls[LD->Dlls.size() - 1], "init"));
     LD->DllMap[STR] = LD->Dlls[LD->Dlls.size() - 1];
+    
 }

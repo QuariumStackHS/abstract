@@ -10,8 +10,8 @@ extern "C++"
 {
     Loader*LDNew_Loader();
     void LDRegisterFromDlls(Loader*,Abstract*);
-    void LDUnloadAllDlls(Loader*);
-    void LDDynUnload(Loader*,string);
+    void LDUnloadAllDlls(Loader*,Abstract*);
     void LDDynload(Loader*,string);
+    void LDDynUnload(Loader *,Abstract*, string );
 
 }

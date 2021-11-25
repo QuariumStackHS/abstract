@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 
     AB_Dump(This);
 
-    LDUnloadAllDlls(Load);
+    LDUnloadAllDlls(Load,This);
     // LDDynUnload(Load,"DLLs/Dll.so");
     cout << "nice" << endl;
     return 0;

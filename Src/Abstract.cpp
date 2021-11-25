@@ -19,11 +19,16 @@ void AB_Dump(Abstract *This)
                   << std::endl;
     }
 }
-void AB_BuildParamfromchar(Abstract*This,char**Argv,int argc){
-    for(int i=0;i<argc;i++){AB_PushParam(This,(void*)new string(Argv[i]));}
+void AB_BuildParamfromchar(Abstract *This, char **Argv, int argc)
+{
+    for (int i = 0; i < argc; i++)
+    {
+        AB_PushParam(This, (void *)new string(Argv[i]));
+    }
 }
 void AB_PushParam(Abstract *This, void *ptr) { This->Param.push_back(ptr); }
-void* AB_ReadNextParam(Abstract*This){return This->Param[++This->ParamIndex];}
+void *AB_ReadNextParam(Abstract *This) { return (This->Param.size() > This->ParamIndex + 1) ? This->Param[++This->ParamIndex] : nullptr; }
+
 void *AB_PopParam(Abstract *This)
 {
     void *ptr = This->Param[This->Param.size() - 1];

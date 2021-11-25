@@ -38,7 +38,15 @@ extern "C++"
 }
 
 /*use DLLEXPORT as a keyword see Src/DLL.cpp*/
-#ifndef DLLEXPORT
-#define DLLEXPORT extern "C" __declspec(dllexport)
-#endif
+namespace ClientAbstractDLL{
+    #ifndef DLLEXPORT
+        #define DLLEXPORT extern "C" __declspec(dllexport)
+    #endif
+    #ifndef DLLFNCHANDLE
+    #define DLLFNCHANDLE
+    /*      Keyword  <Value... Abstract::FNC>*/
+    #define DLL_INIT DLLEXPORT void init
+    #define DLL_EXIT DLLEXPORT void destroy
+    #endif
+}
 #endif
