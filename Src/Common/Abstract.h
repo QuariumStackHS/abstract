@@ -20,7 +20,7 @@ struct Abstract
     /*Function added by Dlls*/
 
     map<string, FNC> DllFuncs;
-    // param could be anything
+    // param could be anything but it should be a string
     vector<void *> Param;
     int ParamIndex=0;
 };
