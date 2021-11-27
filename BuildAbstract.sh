@@ -7,3 +7,4 @@ rm Main.o
 rm DLLReader.o
 rm Abstract.o
 sh BuildDll.sh
+sh BuildSTDll.sh

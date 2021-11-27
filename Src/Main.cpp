@@ -9,7 +9,8 @@ int main(int argc, char **argv)
     cout << "Registering.." << endl;
     LDRegisterFromDlls(Load, This);
 
-    AB_Dump(This);
+    AB_Cycle(This);
+    //AB_Dump(This);
 
     LDUnloadAllDlls(Load,This);
     // LDDynUnload(Load,"DLLs/Dll.so");

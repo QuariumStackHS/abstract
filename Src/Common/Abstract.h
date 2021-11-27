@@ -35,9 +35,13 @@ extern "C++"
     void* AB_PopParam(Abstract*);
     void* AB_ReadNextParam(Abstract*);
     void AB_Dump(Abstract *);
+    void AB_Cycle(Abstract*);
+    void AB_Exe(Abstract*,string);
 }
 
-/*use DLLEXPORT as a keyword see Src/DLL.cpp*/
+/*use DLLEXPORT as a keyword see Src/DLL.cpp
+  or use macros DLL_INIT & DLL_EXIT 
+*/
 namespace ClientAbstractDLL{
     #ifndef DLLEXPORT
         #define DLLEXPORT extern "C" __declspec(dllexport)
@@ -45,8 +49,8 @@ namespace ClientAbstractDLL{
     #ifndef DLLFNCHANDLE
     #define DLLFNCHANDLE
     /*      Keyword  <Value... Abstract::FNC>*/
-    #define DLL_INIT DLLEXPORT void init
-    #define DLL_EXIT DLLEXPORT void destroy
+    #define DLL_INIT DLLEXPORT void init // DLL_INIT(Abstract*){...}
+    #define DLL_EXIT DLLEXPORT void destroy //DLL_EXIT(Abstract*){...}
     #endif
 }
 #endif

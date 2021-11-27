@@ -19,6 +19,23 @@ void AB_Dump(Abstract *This)
                   << std::endl;
     }
 }
+void AB_Exe(Abstract *This, string str)
+{
+    Abstract::FNC ADDR_PTR = This->DllFuncs[str];
+    if (ADDR_PTR)
+    {
+        ADDR_PTR(This);
+    }
+}
+void AB_Cycle(Abstract *This)
+{
+    int thisint = 0;
+    while ((This->Param.size() > thisint + 1))
+    {
+        This->ParamIndex = thisint + 1;
+        AB_Exe(This, *(string *)This->Param[++thisint]);
+    }
+}
 void AB_BuildParamfromchar(Abstract *This, char **Argv, int argc)
 {
     for (int i = 0; i < argc; i++)

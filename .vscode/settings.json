@@ -5,7 +5,8 @@
         "ios": "cpp",
         "locale": "cpp",
         "filesystem": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "utility": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Enabled"
 }
