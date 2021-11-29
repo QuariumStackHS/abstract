@@ -1,6 +1,7 @@
 #include "Common/DLLReader.h"
 #include "Common/Sha3/digestpp.hpp"
 #include "Common/sqlite3.h"
+#include <sstream>
 using namespace digestpp;
 
 /*
@@ -20,14 +21,16 @@ string CreateTables="CREATE TABLE compile ("\
 "    includes	TEXT"\
 ");";
 };
-char *hashF(string f)
+unsigned char *hashF(string f)
 {
-    char *c = "lol";
+    ifstream File(f);
+    stringstream ss;
+    ss<<File.rdbuf();
     unsigned char buf[32];
-    unsigned char buf2[32];
-    sha3(256).absorb("The quick brown fox jumps over the lazy dog").digest(buf, sizeof(buf));
-    sha3(256).absorb("The quick brown fox jumps over the lazy dog").digest(buf2, sizeof(buf2));
-    cout << isEqual(buf, buf2, sizeof(buf)) << endl;
+    //thanks VSC for giving me an error about sha3 and digest you motherfucker
+    sha3(256).absorb(ss.str()).digest(buf, sizeof(buf));
+    return buf;
+    //cout << isEqual(buf, buf2, sizeof(buf)) << endl;
 }
 
 void create_DLL_CFG(Abstract *T)

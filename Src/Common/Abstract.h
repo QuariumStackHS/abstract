@@ -1,15 +1,17 @@
 #ifndef ABSTRACT
 #define ABSTRACT
+#include <sstream>
 #include <cstring>
 #include <filesystem>
+namespace fs = std::filesystem;
+using namespace std;
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <memory.h>
 #include <string>
 #include <vector>
-namespace fs = std::filesystem;
-using namespace std;
+
 
 /*definition for Main and Dlls of Abstract Structure*/
 struct Abstract

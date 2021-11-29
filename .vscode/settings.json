@@ -6,7 +6,9 @@
         "locale": "cpp",
         "filesystem": "cpp",
         "map": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "dllreader.h": "c",
+        "abstract.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
